@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda de Produtos</title>
+</head>
+<body>
+
+    <h2>Venda de Produtos</h2>
+
+    <form id="productForm">
+        <label for="product">Produto:</label>
+        <select id="product" name="product">
+            <option value="1">Produto A - $10.00</option>
+            <option value="2">Produto B - $20.00</option>
+            <option value="3">Produto C - $30.00</option>
+        </select>
+
+        <label for="quantity">Quantidade:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+        <button type="button" onclick="addToCart()">Adicionar ao Carrinho</button>
+    </form>
+
+    <h3>Carrinho de Compras</h3>
+    <ul id="cart">
+        <!-- Itens do carrinho serão adicionados aqui -->
+    </ul>
+
+    <script>
+        function addToCart() {
+            // Obter os valores do produto e quantidade
+            var productId = document.getElementById("product").value;
+            var productName = document.getElementById("product").options[document.getElementById("product").selectedIndex].text;
+            var quantity = document.getElementById("quantity").value;
+
+            // Criar um item de carrinho
+            var cartItem = document.createElement("li");
+            cartItem.textContent = productName + " - Quantidade: " + quantity;
+
+            // Adicionar item ao carrinho
+            document.getElementById("cart").appendChild(cartItem);
+
+            // Limpar os campos do formulário
+            document.getElementById("product").value = "";
+            document.getElementById("quantity").value = 1;
+        }
+    </script>
+
+</body>
+</html>
